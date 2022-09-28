@@ -10,8 +10,8 @@
     <input id="cotacao-dolar" type="number" 
       v-model="cotacaoDolar" placeholder="digite valor no formato XX.XX"/>
     <div class="botao">
-      <button class="botao__limpar">Limpar</button>
-      <button class="botao__calcular" @click="calculo">Calcular</button>
+      <button class="botao__calcular" @click="calcular">Calcular</button>
+      <button class="botao__limpar" @click="limpar">Limpar</button>
     </div>
     <div class="resultado-calculo">
       <p>Com R${{ quantidadeReais }} é possível comprar <strong>U$${{ quantidadeDolares }}</strong>
@@ -32,9 +32,14 @@ export default {
     }
   },
   methods: {
-    calculo: function() {
+    calcular: function() {
       this.quantidadeDolares = (this.quantidadeReais / this.cotacaoDolar).toFixed(2)
       console.log(this.quantidadeDolares)      
+    },
+    limpar: function() {
+      this.quantidadeReais = null,
+      this.cotacaoDolar = null,
+      this.quantidadeDolares = null
     }
   }
 }
@@ -110,7 +115,7 @@ input:hover {
   border-radius: 5px;  
 }
 
-.botao__limpar {
+.botao__calcular {
   margin-right: 1em;
 }
 
@@ -119,5 +124,16 @@ input:hover {
   margin-bottom: 1.5em;
   align-self: center;
   font-size: 18px;
+}
+
+@media (max-width: 800px) {
+  .container {
+    margin: 1rem;
+  }
+
+  input {
+    width: 60vw;
+    padding: 1em;
+  }
 }
 </style>
