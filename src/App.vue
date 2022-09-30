@@ -4,18 +4,21 @@
     <h2>Reais para Dólares</h2>
     <img class="imagem" src="./assets/money.svg" />
     <label for="quantidade-reais">Quantidade em reais:</label>
-    <input id="quantidade-reais" type="number" 
-      v-model="quantidadeReais" placeholder="digite valor no formato XX.XX"/>
+    <input id="quantidade-reais" type="number" v-model="quantidadeReais" 
+      v-bind:disabled="quantidadeDolares"
+      placeholder="digite valor no formato XX.XX"/> 
     <label for="cotacao-dolar">Cotação do dólar:</label>
-    <input id="cotacao-dolar" type="number" 
-      v-model="cotacaoDolar" placeholder="digite valor no formato XX.XX"/>
-    <div class="botao">
+    <input id="cotacao-dolar" type="number" v-model="cotacaoDolar"
+      v-bind:disabled="quantidadeDolares" 
+      placeholder="digite valor no formato XX.XX"/>
+    <div class="botao" v-if="!quantidadeDolares">
       <button class="botao__calcular" @click="calcular">Calcular</button>
       <button class="botao__limpar" @click="limpar">Limpar</button>
     </div>
-    <div class="resultado-calculo">
+    <div class="resultado-calculo" v-if="quantidadeDolares">
       <p>Com R${{ quantidadeReais }} é possível comprar <strong>U$${{ quantidadeDolares }}</strong>
       a R${{ cotacaoDolar }} cada.</p>
+      <button class="botao__calcular-novamente" @click="limpar" label="Calcular Novamente">Calcular Novamente</button>
     </div>
   </div>
 </template>
@@ -47,7 +50,7 @@ export default {
 
 <style>
 html {
-  background-color: #00BFA6;
+  background-color: #00BFA6;  
 }
 
 h1,
@@ -105,9 +108,10 @@ input:hover {
 }
 
 .botao__limpar,
-.botao__calcular {
+.botao__calcular,
+.botao__calcular-novamente {
   padding: .7em;
-  margin: 1.5em 0 1em;
+  margin: 1.5em 0 1.5em;
   background-color: #00BFA6; 
   color: #FFFFFF;
   font-size: 16px;
@@ -117,6 +121,10 @@ input:hover {
 
 .botao__calcular {
   margin-right: 1em;
+}
+
+.botao__calcular-novamente {
+  width: 25vw;
 }
 
 .resultado-calculo {
@@ -131,9 +139,17 @@ input:hover {
     margin: 1rem;
   }
 
+  .imagem {
+  width: 30vw;
+  }
+
   input {
     width: 60vw;
-    padding: 1em;
+    padding: 1em;    
   }
+
+  .botao__calcular-novamente {
+    width: 50vw;
+  }  
 }
 </style>
