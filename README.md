@@ -2,7 +2,7 @@
 
 
 
-O presente projeto foi construído como trabalho prático para exercitar conceitos do *framework* Vue, ministrados durante o *bootcamp* **Desenvolvedora Front-End** da IGTI/XPE . Trata-se de um conversor de moedas, que converte reais por dólar, conforme a cotação informada pelo usuário.
+O presente projeto foi construído como trabalho prático para exercitar conceitos do *framework* Vue, ministrados durante o *bootcamp* **Desenvolvedora Front-End** da IGTI/XPE . Trata-se de um conversor de moedas, que converte reais por dólares, conforme a cotação informada pelo usuário.
 
 
 
